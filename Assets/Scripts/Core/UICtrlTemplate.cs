@@ -34,6 +34,6 @@ public class UICtrlTemplate : UICtrlBase<UIViewTemplate, UITemplateProxy>
     //View层事件接收器
     public override void OnNotify(int state)
     {
-        // throw new System.NotImplementedException();
+        //
     }
 }

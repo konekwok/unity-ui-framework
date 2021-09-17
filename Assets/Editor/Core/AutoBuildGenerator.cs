@@ -21,7 +21,7 @@ public static class AutoBuildGenerator
         // Debug.Log($"name:{objName} relativePath:{relativePath}");
         var newCtrlName = objName;
         var UIName = objName.Substring(objName.IndexOf("UICtrl")+6);
-        Debug.Log($"UIName:{UIName}");
+        // Debug.Log($"UIName:{UIName}");
         var newProxyName = "UI"+UIName+"Proxy";
         var newViewName = "UIView"+UIName;
         var newDataName = "UI"+UIName+"Data";
@@ -36,7 +36,7 @@ public static class AutoBuildGenerator
             ctrlContent = ctrlContent.Replace("UIViewTemplate", newViewName);
             ctrlContent = ctrlContent.Replace("UITemplateProxy", newProxyName);
         }
-        Debug.Log(ctrlContent);
+        // Debug.Log(ctrlContent);
         var ctrlfileName = CTRL_PATH + newCtrlName+".cs";
         var ctrlfil = new FileInfo(ctrlfileName);
         using (StreamWriter sw = ctrlfil.CreateText())
@@ -51,7 +51,7 @@ public static class AutoBuildGenerator
             viewContent = sr.ReadToEnd();
             viewContent = viewContent.Replace("UIViewTemplate", newViewName);
         }
-        Debug.Log(viewContent);
+        // Debug.Log(viewContent);
         var viewfileName = VIEW_PATH + newViewName+".cs";
         var viewfil = new FileInfo(viewfileName);
         using (StreamWriter sw = viewfil.CreateText())
@@ -67,7 +67,7 @@ public static class AutoBuildGenerator
             proxyContent = proxyContent.Replace("UITemplateProxy", newProxyName);
             proxyContent = proxyContent.Replace("UITemplateData", newDataName);
         }
-        Debug.Log(proxyContent);
+        // Debug.Log(proxyContent);
         var proxyfileName = PROXY_PATH + newProxyName+".cs";
         var proxyfil = new FileInfo(proxyfileName);
         using (StreamWriter sw = proxyfil.CreateText())
@@ -76,6 +76,6 @@ public static class AutoBuildGenerator
         }
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
-        Debug.Log($"Build ${newCtrlName} ${newViewName} ${newProxyName}");
+        Debug.Log($"Build {newCtrlName} {newViewName} {newProxyName}");
     }
 }
