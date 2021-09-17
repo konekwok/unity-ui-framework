@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class UICtrlBase<T, P> : IUICtrlBase where T : UIViewBase, new()
-                                                        where P : UIProxyBase, new()
+
+
+public abstract class UICtrlBase<T> : IUICtrlBase where T : UIViewBase, new()
 {
     public enum UIState
     {
@@ -13,11 +13,9 @@ public abstract class UICtrlBase<T, P> : IUICtrlBase where T : UIViewBase, new()
         closed,
     }
     private T m_uiview;
-    private P m_proxy;
     private UIState m_state;
-    public void Init(UIProxyBase ProxyBase, GameObject root)
+    public virtual void Init(UIProxyBase ProxyBase, GameObject root)
     {
-        m_proxy = (P)ProxyBase;
         m_uiview = root.GetComponent<T>();
         m_uiview.Notify = OnNotify;
         root.SetActive(false);
@@ -49,13 +47,6 @@ public abstract class UICtrlBase<T, P> : IUICtrlBase where T : UIViewBase, new()
             return m_uiview;
         }
     }
-    public P Proxy
-    {
-        get
-        {
-            return m_proxy;
-        }
-    }
     public UIState CurState
     {
         get
@@ -68,6 +59,24 @@ public abstract class UICtrlBase<T, P> : IUICtrlBase where T : UIViewBase, new()
     public abstract void Close();
     public abstract void OnDestroy();
     public abstract void OnNotify();
+}
+public abstract class UICtrlBase<T, P> : UICtrlBase<T> where T : UIViewBase, new()
+                                                        where P : UIProxyBase, new()
+{
+    private P m_proxy;
+    private UIState m_state;
+    public override void Init(UIProxyBase ProxyBase, GameObject root)
+    {
+        m_proxy = (P)ProxyBase;
+        base.Init(ProxyBase, root);
+    }
+    public P Proxy
+    {
+        get
+        {
+            return m_proxy;
+        }
+    }
 }
 public abstract class UICtrlBase<T, C, P> : UICtrlBase<T, P> where T : UIViewBase, new()
                                                         where P : UIProxyBase, new()
