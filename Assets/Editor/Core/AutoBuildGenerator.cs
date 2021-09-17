@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.IO;
 
@@ -15,6 +13,15 @@ public static class AutoBuildGenerator
     static string PROXY_PATH = "Assets/Scripts/UI/Proxy/";
     [MenuItem("CONTEXT/RectTransform/BuildUIScript")]
     private static void BuildUIScript()
+    {
+        BuildUIScript(true);
+    }
+    [MenuItem("CONTEXT/RectTransform/BuildUIScriptWithoutProxy")]
+    private static void BuildUIScriptWithoutProxy()
+    {
+        BuildUIScript(false);
+    }
+    static void BuildUIScript(bool isGenProxy)
     {
         var objName = Selection.activeGameObject.name;
         // var relativePath = Application.dataPath;
@@ -59,20 +66,23 @@ public static class AutoBuildGenerator
             sw.Write(viewContent);
         }
         //create uiproxy
-        var proxyTempfil = new FileInfo(PROXY_TEMPLATE_PATH);
-        var proxyContent = "";
-        using (StreamReader sr = proxyTempfil.OpenText())
+        if(isGenProxy)
         {
-            proxyContent = sr.ReadToEnd();
-            proxyContent = proxyContent.Replace("UITemplateProxy", newProxyName);
-            proxyContent = proxyContent.Replace("UITemplateData", newDataName);
-        }
-        // Debug.Log(proxyContent);
-        var proxyfileName = PROXY_PATH + newProxyName+".cs";
-        var proxyfil = new FileInfo(proxyfileName);
-        using (StreamWriter sw = proxyfil.CreateText())
-        {
-            sw.Write(proxyContent);
+            var proxyTempfil = new FileInfo(PROXY_TEMPLATE_PATH);
+            var proxyContent = "";
+            using (StreamReader sr = proxyTempfil.OpenText())
+            {
+                proxyContent = sr.ReadToEnd();
+                proxyContent = proxyContent.Replace("UITemplateProxy", newProxyName);
+                proxyContent = proxyContent.Replace("UITemplateData", newDataName);
+            }
+            // Debug.Log(proxyContent);
+            var proxyfileName = PROXY_PATH + newProxyName+".cs";
+            var proxyfil = new FileInfo(proxyfileName);
+            using (StreamWriter sw = proxyfil.CreateText())
+            {
+                sw.Write(proxyContent);
+            }
         }
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
