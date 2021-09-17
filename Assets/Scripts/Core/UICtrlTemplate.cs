@@ -1,7 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
+// public class UITemplateData : UIDataBase
+// {
+//     public override void Reset()
+//     {
+        
+//     }
+// }
 public class UICtrlTemplate : UICtrlBase<UIViewTemplate, UITemplateProxy>
 {
     public override void Open(UIDataBase data)
