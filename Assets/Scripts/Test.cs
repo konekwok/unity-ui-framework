@@ -12,14 +12,20 @@ public class Test : MonoBehaviour
     void Start()
     {
         UIManager.Instance.OnStart();
+        //
         var data = UIManager.Instance.GetProxy<UITestProxy>().GetUIData<UITestData>();
         data.tmpVal = 2;
         UIManager.Instance.OpenUI<UICtrlTest>(data);
+        //
         UIManager.Instance.OpenUI<UICtrlTestWrap>();
+        //
+        UIManager.Instance.OpenUI<UICtrlTestWithoutProxy>();
     }
     public void OnClickBtn()
     {
         UIManager.Instance.CloseUI<UICtrlTest>();
         UIManager.Instance.CloseUI<UICtrlTestWrap>();
+        //
+        UIManager.Instance.CloseUI<UICtrlTestWithoutProxy>();
     }
 }

@@ -33,7 +33,7 @@ public class UICtrlTestWrap : UICtrlBase<UIViewTestWrap, UICtrlTestItem, UITestW
         Childs.Clear();
         base.Destroy();
     }
-    public override void OnNotify()
+    public override void OnNotify(int state)
     {
         // throw new System.NotImplementedException();
     }

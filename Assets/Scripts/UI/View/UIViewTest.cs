@@ -6,6 +6,6 @@ public class UIViewTest : UIViewBase
 {
     void FixedUpdate()
     {
-        Notify();
+        Notify(-1);
     }
 }

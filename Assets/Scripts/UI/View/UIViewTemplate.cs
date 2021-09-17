@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIViewTestItem : UIViewBase
+public class UIViewTemplate : UIViewBase
 {
-
-    // Update is called once per frame
+    //TODO 如需要心跳请去掉注释
     // void FixedUpdate()
     // {
-    //     Notify();
+    //     Notify(-1);
     // }
 }

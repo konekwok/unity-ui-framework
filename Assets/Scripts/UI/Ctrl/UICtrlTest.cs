@@ -32,7 +32,7 @@ public class UICtrlTest : UICtrlBase<UIViewTest, UITestProxy>
     {
         base.Destroy();
     }
-    public override void OnNotify()
+    public override void OnNotify(int state)
     {
         Debug.LogWarning("UICtrlTest OnNotify");
     }

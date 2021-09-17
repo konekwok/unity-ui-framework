@@ -58,7 +58,7 @@ public abstract class UICtrlBase<T> : IUICtrlBase where T : UIViewBase, new()
     public abstract void Refresh();
     public abstract void Close();
     public abstract void OnDestroy();
-    public abstract void OnNotify();
+    public abstract void OnNotify(int state);
 }
 public abstract class UICtrlBase<T, P> : UICtrlBase<T> where T : UIViewBase, new()
                                                         where P : UIProxyBase, new()

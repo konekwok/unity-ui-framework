@@ -3,5 +3,5 @@ using UnityEngine;
 
 public class UIViewBase : MonoBehaviour
 {
-    public Action Notify;
+    public Action<int> Notify;
 }
