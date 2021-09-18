@@ -51,7 +51,9 @@ public class UICtrlTest : UICtrlBase<UIViewTest, UITestProxy>
     }
     public override void OnNotify(int state)
     {
-        Debug.LogWarning("UICtrlTest OnNotify");
-        OnClickBtn();
+        if(state == -1)
+            Debug.LogWarning("UICtrlTest OnNotify");
+        else if(state == 1)
+            OnClickBtn();
     }
 }

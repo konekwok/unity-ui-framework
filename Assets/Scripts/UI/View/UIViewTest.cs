@@ -6,7 +6,7 @@ public class UIViewTest : UIViewBase
 {
     void FixedUpdate()
     {
-        // Notify(-1);
+        Notify(-1);
     }
     public void OnClickTest()
     {
