@@ -18,12 +18,12 @@ public class UICtrlTestWrap : UICtrlBase<UIViewTestWrap, UICtrlTestItem, UITestW
     }
     public override void Refresh()
     {
-        this.Proxy.RequestHeight += this.GetHeight;
+        this.Proxy.RequestContent += this.GetContent;
         base.Show();
     }
     public override void Close()
     {
-        this.Proxy.RequestHeight -= this.GetHeight;
+        this.Proxy.RequestContent -= this.GetContent;
         OnDestroy();
     }
     public override void OnDestroy()
@@ -39,8 +39,8 @@ public class UICtrlTestWrap : UICtrlBase<UIViewTestWrap, UICtrlTestItem, UITestW
     {
         
     }
-    public int GetHeight()
+    public int GetContent()
     {
-        return 1000;
+        return int.Parse(this.View.test.text);
     }
 }

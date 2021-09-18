@@ -31,7 +31,7 @@ public class UICtrlTest : UICtrlBase<UIViewTest, UITestProxy>
         {
             case SessionRoute.TestWraprequestIntVal:
                 var valint = (SessionTest)val;
-                Debug.Log("OnReceived:"+valint.val);
+                this.View.test.text = valint.val.ToString();
                 break;
             default:
                 break;

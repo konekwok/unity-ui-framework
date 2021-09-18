@@ -6,8 +6,8 @@ using UnityEngine;
 public class UITestWrapProxy : UIProxyBase
 {
     // Start is called before the first frame update
-    public delegate int RequestHeightHandler();
-    public event RequestHeightHandler RequestHeight;
+    public delegate int RequestContentHandler();
+    public event RequestContentHandler RequestContent;
     public UITestWrapProxy()
     {
         m_uidatas = new Dictionary<string, UIDataBase>();
@@ -32,7 +32,7 @@ public class UITestWrapProxy : UIProxyBase
     }
     public SessionContent GetHeight(int sessionId)
     {
-        int val = RequestHeight();
+        int val = RequestContent();
         var session = Fetch<SessionTest>(sessionId);
         session.val = val;
         return session;

@@ -26,6 +26,7 @@ public class Test : MonoBehaviour
     }
     public void OnClickBtn()
     {
+        Debug.Log("OnClickBtn");
         UIManager.Instance.CloseUI<UICtrlTest>();
         UIManager.Instance.CloseUI<UICtrlTestWrap>();
         //
