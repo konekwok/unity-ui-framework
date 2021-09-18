@@ -31,4 +31,8 @@ public class Test : MonoBehaviour
         //
         UIManager.Instance.CloseUI<UICtrlTestWithoutProxy>();
     }
+    void FixedUpdate()
+    {
+        UIManager.Instance.Tick();
+    }
 }

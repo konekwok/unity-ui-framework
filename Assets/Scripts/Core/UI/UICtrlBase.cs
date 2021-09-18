@@ -7,6 +7,7 @@ public abstract class UICtrlBase<T> : IUICtrlBase where T : UIViewBase, new()
 {
     public enum UIState
     {
+        inited,
         opening,
         opened,
         closing,
@@ -16,6 +17,7 @@ public abstract class UICtrlBase<T> : IUICtrlBase where T : UIViewBase, new()
     private UIState m_state;
     public virtual void Init(UIProxyBase ProxyBase, GameObject root)
     {
+        m_state = UIState.inited;
         m_uiview = root.GetComponent<T>();
         m_uiview.Notify = OnNotify;
         root.SetActive(false);
@@ -35,11 +37,13 @@ public abstract class UICtrlBase<T> : IUICtrlBase where T : UIViewBase, new()
     }
     public void Show()
     {
+        m_state = UIState.opened;
         this.View.gameObject.SetActive(true);
     }
     public void Hide()
     {
         this.View.gameObject.SetActive(false);
+        m_state = UIState.closed;
     }
     public T View
     {

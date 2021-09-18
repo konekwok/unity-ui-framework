@@ -1,7 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
-
+using Core;
 public class UIMangerCore
 {
     protected UIMangerCore()
@@ -9,10 +9,12 @@ public class UIMangerCore
         m_uiproxys = new Dictionary<string, UIProxyBase>();
         m_proxys = new Dictionary<string, UIProxyBase>();
         m_uiMap = new Dictionary<string, IUICtrlBase>();
+        m_timerBuilder = new TimerBuilder();
     }
     private Dictionary<string, UIProxyBase> m_uiproxys; 
     private Dictionary<string, UIProxyBase> m_proxys;
     protected Dictionary<string, IUICtrlBase> m_uiMap;
+    protected TimerBuilder m_timerBuilder;
     protected void Register<T, P>() where P : UIProxyBase, new()
     {
         string ctrlkey = typeof(T).Name;
@@ -48,5 +50,17 @@ public class UIMangerCore
     {
         var proxy = GetProxy<T>();
         proxy.Respond<D>(sessionId, action);
+    }
+    public virtual void Tick()
+    {
+        m_timerBuilder.OnFixedUpdate();
+    }
+    public Timer CreateTimer(TimerData data)
+    {
+        return m_timerBuilder.CreateTimer(data);
+    }
+    public void ForceStopTimer(Timer timer, object obj)
+    {
+        m_timerBuilder.ForceStopTimer(timer, obj);
     }
 }

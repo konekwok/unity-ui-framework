@@ -61,4 +61,8 @@ public class UIManager : UIMangerCore
             ctrl.Close();
         }
     }
+    public override void Tick()
+    {
+        base.Tick();
+    }
 }
