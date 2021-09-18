@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIManager : UIMangerCore
 {
+    UIManager(){}
     static UIManager s_instance;
     public static UIManager Instance
     {
@@ -17,7 +18,7 @@ public class UIManager : UIMangerCore
             return s_instance;
         }
     }
-    public void OnAwake()
+    protected void OnAwake()
     {
         
     }
@@ -39,6 +40,7 @@ public class UIManager : UIMangerCore
         if(null != resobj)
         {
             GameObject obj = Object.Instantiate(resobj);
+            obj.transform.SetParent(GameObject.Find("Canvas").transform, false);
             ctrl.Init(GetProxy(typename), obj);
         }
         m_uiMap.Add(typename, ctrl);

@@ -8,10 +8,13 @@ public class Test : MonoBehaviour
     void Awake()
     {
         _ = UIManager.Instance;
+        _ = SessionRegister.Instance;
     }
     void Start()
     {
+        //INit
         UIManager.Instance.OnStart();
+        SessionRegister.Instance.OnStart();
         //
         var data = UIManager.Instance.GetProxy<UITestProxy>().GetUIData<UITestData>();
         data.tmpVal = 2;

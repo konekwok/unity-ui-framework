@@ -1,18 +1,17 @@
 ﻿
+using System;
 using System.Collections.Generic;
 
 public class UIMangerCore
 {
-    public UIMangerCore()
+    protected UIMangerCore()
     {
         m_uiproxys = new Dictionary<string, UIProxyBase>();
         m_proxys = new Dictionary<string, UIProxyBase>();
-        // m_uidatas = new Dictionary<string, UIDataBase>();
         m_uiMap = new Dictionary<string, IUICtrlBase>();
     }
     private Dictionary<string, UIProxyBase> m_uiproxys; 
     private Dictionary<string, UIProxyBase> m_proxys;
-    // private Dictionary<string, UIDataBase> m_uidatas;
     protected Dictionary<string, IUICtrlBase> m_uiMap;
     protected void Register<T, P>() where P : UIProxyBase, new()
     {
@@ -42,5 +41,12 @@ public class UIMangerCore
             return val;
         }
         return null;
+    }
+    Dictionary<int, Action<SessionContent>> m_dic;
+    public void Conversation<T, D>(int sessionId, Action<int, D> action) where T : UIProxyBase
+                                                                    where D : SessionContent
+    {
+        var proxy = GetProxy<T>();
+        proxy.Respond<D>(sessionId, action);
     }
 }

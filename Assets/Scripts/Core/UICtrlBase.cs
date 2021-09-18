@@ -20,6 +20,7 @@ public abstract class UICtrlBase<T> : IUICtrlBase where T : UIViewBase, new()
         m_uiview.Notify = OnNotify;
         root.SetActive(false);
     }
+    public virtual void OnReceived(int sessionId, SessionContent content){}
     public void Destroy(bool imme = true)
     {
         if(imme)

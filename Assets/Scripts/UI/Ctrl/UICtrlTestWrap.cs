@@ -18,10 +18,12 @@ public class UICtrlTestWrap : UICtrlBase<UIViewTestWrap, UICtrlTestItem, UITestW
     }
     public override void Refresh()
     {
+        this.Proxy.RequestHeight += this.GetHeight;
         base.Show();
     }
     public override void Close()
     {
+        this.Proxy.RequestHeight -= this.GetHeight;
         OnDestroy();
     }
     public override void OnDestroy()
@@ -35,6 +37,10 @@ public class UICtrlTestWrap : UICtrlBase<UIViewTestWrap, UICtrlTestItem, UITestW
     }
     public override void OnNotify(int state)
     {
-        // throw new System.NotImplementedException();
+        
+    }
+    public int GetHeight()
+    {
+        return 1000;
     }
 }

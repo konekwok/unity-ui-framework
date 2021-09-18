@@ -20,6 +20,23 @@ public class UICtrlTest : UICtrlBase<UIViewTest, UITestProxy>
         Debug.Log("UICtrlTest uidata:"+m_uidata.tmpVal);
         Refresh();
     }
+    public void OnClickBtn()
+    {
+        this.Proxy.Request<SessionContent>((int)SessionRoute.TestWraprequestIntVal, this.OnReceived);
+    }
+    public override void OnReceived(int sessionId, SessionContent val)
+    {
+        var session = (SessionRoute)(sessionId);
+        switch(session)
+        {
+            case SessionRoute.TestWraprequestIntVal:
+                var valint = (SessionTest)val;
+                Debug.Log("OnReceived:"+valint.val);
+                break;
+            default:
+                break;
+        }
+    }
     public override void Refresh()
     {
         base.Show();
@@ -35,5 +52,6 @@ public class UICtrlTest : UICtrlBase<UIViewTest, UITestProxy>
     public override void OnNotify(int state)
     {
         Debug.LogWarning("UICtrlTest OnNotify");
+        OnClickBtn();
     }
 }
