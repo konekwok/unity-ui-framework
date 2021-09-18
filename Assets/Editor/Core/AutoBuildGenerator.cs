@@ -4,9 +4,9 @@ using System.IO;
 
 public static class AutoBuildGenerator
 {
-    static string CTRL_TEMPLATE_PATH = "Assets/Scripts/Core/UICtrlTemplate.cs";
-    static string VIEW_TEMPLATE_PATH = "Assets/Scripts/Core/UIViewTemplate.cs";
-    static string PROXY_TEMPLATE_PATH = "Assets/Scripts/Core/UITemplateProxy.cs";
+    static string CTRL_TEMPLATE_PATH = "Assets/Scripts/Core/UI/UICtrlTemplate.cs";
+    static string VIEW_TEMPLATE_PATH = "Assets/Scripts/Core/UI/UIViewTemplate.cs";
+    static string PROXY_TEMPLATE_PATH = "Assets/Scripts/Core/UI/UITemplateProxy.cs";
 
     static string CTRL_PATH = "Assets/Scripts/UI/Ctrl/";
     static string VIEW_PATH = "Assets/Scripts/UI/View/";
