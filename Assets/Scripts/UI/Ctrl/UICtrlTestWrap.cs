@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UICtrlTestWrap : UICtrlBase<UIViewTestWrap, UICtrlTestItem, UITestWrapProxy>
+public class UICtrlTestWrap : ui.framework.UICtrlBase<UIViewTestWrap, UICtrlTestItem, UITestWrapProxy>
 {
-    public override void Open(UIDataBase data)
+    public override void Open(ui.framework.UIDataBase data)
     {
         Debug.Log("open UICtrlTestWrap");
         var obj = UIManager.Instance.Load<UICtrlTestItem>();

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class UITestData : UIDataBase
+public class UITestData : ui.framework.UIDataBase
 {
     public int tmpVal = 0;
     public override void Reset()
@@ -8,10 +8,10 @@ public class UITestData : UIDataBase
         tmpVal = 0;
     }
 }
-public class UICtrlTest : UICtrlBase<UIViewTest, UITestProxy>
+public class UICtrlTest : ui.framework.UICtrlBase<UIViewTest, UITestProxy>
 {
     UITestData m_uidata;
-    public override void Open(UIDataBase data)
+    public override void Open(ui.framework.UIDataBase data)
     {
         this.Proxy.Test();
         m_uidata = (UITestData)data;

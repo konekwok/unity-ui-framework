@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class UIManager : UIMangerCore
+public class UIManager : ui.framework.UIMangerCore
 {
     UIManager(){}
     static UIManager s_instance;
@@ -25,10 +25,10 @@ public class UIManager : UIMangerCore
         Register<UICtrlTest, UITestProxy>();
         Register<UICtrlTestWrap, UITestWrapProxy>();
     }
-    public void OpenUI<T>(UIDataBase database = null)where T : IUICtrlBase, new()
+    public void OpenUI<T>(ui.framework.UIDataBase database = null)where T : ui.framework.IUICtrlBase, new()
     {
         var typename = typeof(T).Name;
-        if(m_uiMap.TryGetValue(typename, out IUICtrlBase ctrlbase))
+        if(m_uiMap.TryGetValue(typename, out ui.framework.IUICtrlBase ctrlbase))
         {
             ctrlbase.Refresh();
             return;
@@ -53,7 +53,7 @@ public class UIManager : UIMangerCore
     public void CloseUI<T>()
     {
         var typename = typeof(T).Name;
-        if(m_uiMap.TryGetValue(typename, out IUICtrlBase ctrl))
+        if(m_uiMap.TryGetValue(typename, out ui.framework.IUICtrlBase ctrl))
         {
             m_uiMap.Remove(typename);
             ctrl.Close();

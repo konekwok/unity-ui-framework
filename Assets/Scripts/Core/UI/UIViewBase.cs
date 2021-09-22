@@ -1,7 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
-public class UIViewBase : MonoBehaviour
+namespace ui
 {
-    public Action<int> Notify;
+    namespace framework
+    {
+        public class UIViewBase : MonoBehaviour
+        {
+            public Action<int> Notify;
+        }
+    }
 }

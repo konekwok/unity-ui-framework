@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UICtrlTestWithoutProxy : UICtrlBase<UIViewTestWithoutProxy>
+public class UICtrlTestWithoutProxy : ui.framework.UICtrlBase<UIViewTestWithoutProxy>
 {
     public override void Close()
     {
@@ -21,7 +21,7 @@ public class UICtrlTestWithoutProxy : UICtrlBase<UIViewTestWithoutProxy>
         // throw new System.NotImplementedException();
     }
 
-    public override void Open(UIDataBase data)
+    public override void Open(ui.framework.UIDataBase data)
     {
         //TODO 写在最后
         Refresh();

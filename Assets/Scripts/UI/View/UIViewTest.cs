@@ -1,6 +1,6 @@
 ﻿using UnityEngine.UI;
 
-public class UIViewTest : UIViewBase
+public class UIViewTest : ui.framework.UIViewBase
 {
     public Text test;
     void FixedUpdate()

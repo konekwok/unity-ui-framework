@@ -1,14 +1,14 @@
 ﻿
-// public class UITemplateData : UIDataBase
+// public class UITemplateData : ui.framework.UIDataBase
 // {
 //     public override void Reset()
 //     {
         
 //     }
 // }
-public class UICtrlTemplate : UICtrlBase<UIViewTemplate, UITemplateProxy>
+public class UICtrlTemplate : ui.framework.UICtrlBase<UIViewTemplate, UITemplateProxy>
 {
-    public override void Open(UIDataBase data)
+    public override void Open(ui.framework.UIDataBase data)
     {
         //TODO 写在最后
         Refresh();

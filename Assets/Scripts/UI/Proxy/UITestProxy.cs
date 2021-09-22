@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UITestProxy : UIProxyBase
+public class UITestProxy : ui.framework.UIProxyBase
 {
     public UITestProxy()
     {
-        m_uidatas = new Dictionary<string, UIDataBase>();
+        m_uidatas = new Dictionary<string, ui.framework.UIDataBase>();
         RegisterUIData<UITestData>();
         //add event
     }

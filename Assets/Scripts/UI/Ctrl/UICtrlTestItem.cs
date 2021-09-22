@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-public class UITestItemData : UIDataBase
+public class UITestItemData : ui.framework.UIDataBase
 {
     public float TestVal = 0f;
     public override void Reset()
@@ -10,9 +10,9 @@ public class UITestItemData : UIDataBase
         TestVal = 0f;
     }
 }
-public class UICtrlTestItem : UICtrlBase<UIViewBase, UITestWrapProxy>
+public class UICtrlTestItem : ui.framework.UICtrlBase<UIViewTestItem, UITestWrapProxy>
 {
-    public override void Open(UIDataBase data)
+    public override void Open(ui.framework.UIDataBase data)
     {
         var uidata = (UITestItemData)data;
         this.Proxy.TestItem(uidata.TestVal);

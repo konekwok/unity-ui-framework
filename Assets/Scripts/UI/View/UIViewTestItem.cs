@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIViewTestItem : UIViewBase
+public class UIViewTestItem : ui.framework.UIViewBase
 {
 
     // Update is called once per frame

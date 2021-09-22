@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UITestWrapProxy : UIProxyBase
+public class UITestWrapProxy : ui.framework.UIProxyBase
 {
     // Start is called before the first frame update
     public delegate int RequestContentHandler();
     public event RequestContentHandler RequestContent;
     public UITestWrapProxy()
     {
-        m_uidatas = new Dictionary<string, UIDataBase>();
+        m_uidatas = new Dictionary<string, ui.framework.UIDataBase>();
         RegisterUIData<UITestItemData>();
     }
     public void TestItem(float val)

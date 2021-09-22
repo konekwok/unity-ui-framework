@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIViewTestWithoutProxy : UIViewBase
+public class UIViewTestWithoutProxy : ui.framework.UIViewBase
 {
     
 }
