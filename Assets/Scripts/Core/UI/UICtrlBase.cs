@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ui
@@ -14,17 +15,27 @@ namespace ui
                 opened,
                 closing,
                 closed,
+                destroyed,
             }
             private T m_uiview;
             private UIState m_state;
-            public virtual void Init(UIProxyBase ProxyBase, GameObject root)
+            public virtual void Attach(UIProxyBase ProxyBase, GameObject root)
             {
                 m_state = UIState.inited;
                 m_uiview = root.GetComponent<T>();
                 m_uiview.Notify = OnNotify;
                 root.SetActive(false);
             }
+            public virtual IEnumerator AysncOpen(UIDataBase data, AsyncLoadUIBundleData aysncData)
+            {
+                yield break;
+            }
             public virtual void OnReceived(int sessionId, SessionContent content){}
+            public virtual bool AndroidBackPressed(){return false;}
+             public void OnAwake()
+            {
+                this.View.OnAwake();
+            }
             public void Destroy(bool imme = true)
             {
                 if(imme)
@@ -35,6 +46,7 @@ namespace ui
                 {
                     Object.Destroy(this.View.gameObject);
                 }
+                m_state = UIState.destroyed;
                 Debug.Log("destory:"+this.GetType().Name);
             }
             public void Show()
@@ -61,6 +73,13 @@ namespace ui
                     return m_state;
                 }
             }
+            public UILayer Layer
+            {
+                get
+                {
+                    return this.View.uiLayer;
+                }
+            }
             public abstract void Open(UIDataBase data);
             public abstract void Refresh();
             public abstract void Close();
@@ -72,10 +91,10 @@ namespace ui
         {
             private P m_proxy;
             private UIState m_state;
-            public override void Init(UIProxyBase ProxyBase, GameObject root)
+            public override void Attach(UIProxyBase ProxyBase, GameObject root)
             {
                 m_proxy = (P)ProxyBase;
-                base.Init(ProxyBase, root);
+                base.Attach(ProxyBase, root);
             }
             public P Proxy
             {
@@ -102,16 +121,16 @@ namespace ui
                 var ctrl = new C();
                 m_childs.Add(ctrl);
                 var intObj = Object.Instantiate<GameObject>(obj);
-                ctrl.Init(Proxy, intObj);
                 intObj.transform.SetParent(parent, false);
+                ctrl.Attach(Proxy, intObj);
                 ctrl.Open(data);
             }
             public void Instantiate(C ctrl, GameObject obj, Transform parent, UIDataBase data = null)
             {
                 m_childs.Add(ctrl);
                 var intObj = Object.Instantiate<GameObject>(obj);
-                ctrl.Init(Proxy, intObj);
                 intObj.transform.SetParent(parent, false);
+                ctrl.Attach(Proxy, intObj);
                 ctrl.Open(data);
             }
         }
