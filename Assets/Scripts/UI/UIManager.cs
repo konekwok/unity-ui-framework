@@ -39,6 +39,8 @@ public class UIManager : ui.framework.UIMangerCore
         {
             GameObject obj = Object.Instantiate(resobj);
             obj.transform.SetParent(GameObject.Find("Canvas").transform, false);
+            var proxy = GetProxy(typename);
+            proxy.SessionRegister = SessionRegister.Instance;
             ctrl.Init(GetProxy(typename), obj);
         }
         m_uiMap.Add(typename, ctrl);

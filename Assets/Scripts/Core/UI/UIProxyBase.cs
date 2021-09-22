@@ -9,6 +9,14 @@ namespace ui
         {
             public delegate SessionContent RequestUIDataHandler();
             protected Dictionary<string, UIDataBase> m_uidatas;
+            SessionRegisterBase m_sessionRegister;
+            public SessionRegisterBase SessionRegister
+            {
+                set
+                {
+                    m_sessionRegister = value;
+                }
+            }
             public void RegisterUIData<T>() where T : UIDataBase, new()
             {
                 string ctrlkey = typeof(T).Name;
@@ -34,7 +42,7 @@ namespace ui
             public virtual void Respond<D>(int sessionId, Action<int, D> action) where D:SessionContent{}
             public D Fetch<D>(int sessionId) where D : SessionContent
             {
-                return SessionRegister.Instance.Get<D>(sessionId);
+                return m_sessionRegister.Get<D>(sessionId);
             }
         }
     }
