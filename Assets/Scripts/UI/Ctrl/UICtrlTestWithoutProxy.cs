@@ -16,7 +16,7 @@ public class UICtrlTestWithoutProxy : ui.framework.UICtrlBase<UIViewTestWithoutP
         base.Destroy();
     }
 
-    public override void OnNotify(int state)
+    public override void OnViewNotify(int state)
     {
         // throw new System.NotImplementedException();
     }
