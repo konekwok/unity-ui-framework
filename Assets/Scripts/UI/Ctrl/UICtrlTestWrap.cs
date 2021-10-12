@@ -35,7 +35,7 @@ public class UICtrlTestWrap : ui.framework.UICtrlBase<UIViewTestWrap, UICtrlTest
         Childs.Clear();
         base.Destroy();
     }
-    public override void OnNotify(int state)
+    public override void OnViewNotify(int state)
     {
         
     }

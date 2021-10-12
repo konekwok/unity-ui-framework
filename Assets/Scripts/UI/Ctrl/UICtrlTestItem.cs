@@ -31,7 +31,7 @@ public class UICtrlTestItem : ui.framework.UICtrlBase<UIViewTestItem, UITestWrap
         //    Debug.Log("Destroy UICtrlTestItem");
         base.Destroy();
     }
-    public override void OnNotify(int state)
+    public override void OnViewNotify(int state)
     {
         Debug.LogWarning("UICtrlTestItem OnNotify");
     }
