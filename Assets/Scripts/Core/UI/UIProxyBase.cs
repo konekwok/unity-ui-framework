@@ -8,6 +8,19 @@ namespace ui
         public class UIProxyBase
         {
             public delegate SessionContent RequestUIDataHandler();
+            public delegate void NotifyUIHandler(int state);
+            protected NotifyUIHandler m_notifyUI;
+            public NotifyUIHandler NotifyUI
+            {
+                get
+                {
+                    return m_notifyUI;
+                }
+                set
+                {
+                    m_notifyUI = value;
+                }
+            }
             protected Dictionary<string, UIDataBase> m_uidatas;
             SessionRegisterBase m_sessionRegister;
             public SessionRegisterBase SessionRegister

@@ -26,13 +26,18 @@ public class UICtrlTestItem : ui.framework.UICtrlBase<UIViewTestItem, UITestWrap
     {
         OnDestroy();
     }
-   public override void OnDestroy()
-   {
-    //    Debug.Log("Destroy UICtrlTestItem");
-       base.Destroy();
-   }
-   public override void OnNotify(int state)
+    public override void OnDestroy()
+    {
+        //    Debug.Log("Destroy UICtrlTestItem");
+        base.Destroy();
+    }
+    public override void OnNotify(int state)
     {
         Debug.LogWarning("UICtrlTestItem OnNotify");
+    }
+    //proxy层事件接收器
+    public override void OnProxyNotify(int state)
+    {
+        //
     }
 }

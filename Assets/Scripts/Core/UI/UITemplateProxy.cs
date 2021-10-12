@@ -3,6 +3,10 @@ using System;
 
 public class UITemplateProxy : ui.framework.UIProxyBase
 {
+    // public enum ProxyNotify
+    // {
+    //     none,
+    // }
     public UITemplateProxy()
     {
         //如果需要在打开UI时，通过外部给UI传递数据，请实现下现相关逻辑
@@ -19,6 +23,6 @@ public class UITemplateProxy : ui.framework.UIProxyBase
     //和别的ui Proxy建立连接， 响应方
     public override void Respond<D>(int sessionId, Action<int, D> action)
     {
-        
+        // m_notifyUI?.Invoke((int)ProxyNotify.none);
     }
 }

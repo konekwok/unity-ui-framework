@@ -39,6 +39,11 @@ public class UICtrlTestWrap : ui.framework.UICtrlBase<UIViewTestWrap, UICtrlTest
     {
         
     }
+    //proxy层事件接收器
+    public override void OnProxyNotify(int state)
+    {
+        //
+    }
     public int GetContent()
     {
         return int.Parse(this.View.test.text);

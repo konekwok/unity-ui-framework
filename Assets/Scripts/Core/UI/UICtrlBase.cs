@@ -23,7 +23,7 @@ namespace ui
             {
                 m_state = UIState.inited;
                 m_uiview = root.GetComponent<T>();
-                m_uiview.Notify = OnNotify;
+                m_uiview.Notify = OnViewNotify;
                 root.SetActive(false);
             }
             public virtual IEnumerator AysncOpen(UIDataBase data, AsyncLoadUIBundleData aysncData)
@@ -36,7 +36,7 @@ namespace ui
             {
                 this.View.OnAwake();
             }
-            public void Destroy(bool imme = true)
+            public virtual void Destroy(bool imme = true)
             {
                 if(imme)
                 {
@@ -84,7 +84,7 @@ namespace ui
             public abstract void Refresh();
             public abstract void Close();
             public abstract void OnDestroy();
-            public abstract void OnNotify(int state);
+            public abstract void OnViewNotify(int state);
         }
         public abstract class UICtrlBase<T, P> : UICtrlBase<T> where T : UIViewBase, new()
                                                                 where P : UIProxyBase, new()
@@ -94,7 +94,13 @@ namespace ui
             public override void Attach(UIProxyBase ProxyBase, GameObject root)
             {
                 m_proxy = (P)ProxyBase;
+                m_proxy.NotifyUI = OnProxyNotify;
                 base.Attach(ProxyBase, root);
+            }
+            public override void Destroy(bool imme = true)
+            {
+                m_proxy.NotifyUI = null;
+                base.Destroy(imme);
             }
             public P Proxy
             {
@@ -103,6 +109,7 @@ namespace ui
                     return m_proxy;
                 }
             }
+            public abstract void OnProxyNotify(int state);
         }
         public abstract class UICtrlBase<T, C, P> : UICtrlBase<T, P> where T : UIViewBase, new()
                                                                 where P : UIProxyBase, new()

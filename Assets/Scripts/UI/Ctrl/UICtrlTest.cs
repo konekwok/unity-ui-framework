@@ -47,11 +47,23 @@ public class UICtrlTest : ui.framework.UICtrlBase<UIViewTest, UITestProxy>
     {
         base.Destroy();
     }
-    public override void OnNotify(int state)
+    public override void OnViewNotify(int state)
     {
-        if(state == -1)
-            Debug.LogWarning("UICtrlTest OnNotify");
-        else if(state == 1)
-            OnClickBtn();
+        switch((UIViewTest.NotifyState)state)
+        {
+            case UIViewTest.NotifyState.test:
+                Debug.LogWarning("UICtrlTest OnNotify");
+                break;
+            case UIViewTest.NotifyState.clicktest:
+                OnClickBtn();
+                break;
+            default:
+                break;
+        }
+    }
+    //proxy层事件接收器
+    public override void OnProxyNotify(int state)
+    {
+        //
     }
 }

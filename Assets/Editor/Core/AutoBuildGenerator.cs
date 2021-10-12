@@ -56,7 +56,10 @@ public static class AutoBuildGenerator
         using (StreamReader sr = viewTempfil.OpenText())
         {
             viewContent = sr.ReadToEnd();
+            viewContent = viewContent.Replace("UITemplateData", newDataName);
+            viewContent = viewContent.Replace("UICtrlTemplate", newCtrlName);
             viewContent = viewContent.Replace("UIViewTemplate", newViewName);
+            viewContent = viewContent.Replace("UITemplateProxy", newProxyName);
         }
         // Debug.Log(viewContent);
         var viewfileName = VIEW_PATH + newViewName+".cs";

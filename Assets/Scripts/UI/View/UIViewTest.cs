@@ -2,13 +2,18 @@
 
 public class UIViewTest : ui.framework.UIViewBase
 {
+    public enum NotifyState
+    {
+        test,
+        clicktest,
+    }
     public Text test;
     void FixedUpdate()
     {
-        Notify(-1);
+        Notify((int)NotifyState.test);
     }
     public void OnClickTest()
     {
-        Notify(1);
+        Notify((int)NotifyState.clicktest);
     }
 }

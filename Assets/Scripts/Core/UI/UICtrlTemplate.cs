@@ -32,8 +32,25 @@ public class UICtrlTemplate : ui.framework.UICtrlBase<UIViewTemplate, UITemplate
     }
 
     //View层事件接收器
-    public override void OnNotify(int state)
+    public override void OnViewNotify(int state)
     {
-        //
+        // switch((UIViewTemplate.ViewNotify)state)
+        // {
+        //     case UIViewTemplate.ViewNotify.none:
+        //         break;
+        //     default:   
+        //         break;
+        // }
+    }
+    //proxy层事件接收器
+    public override void OnProxyNotify(int state)
+    {
+        // switch((UITemplateProxy.ProxyNotify)state)
+        // {
+        //     case UITemplateProxy.ProxyNotify.none:
+        //         break;
+        //     default:
+        //         break;
+        // }
     }
 }
