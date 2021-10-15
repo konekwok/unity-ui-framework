@@ -14,7 +14,7 @@ public class Test : MonoBehaviour
         UIManager.Instance.OnStart();
         SessionRegister.Instance.OnStart();
         //
-        var data = UIManager.Instance.GetProxy<UITestProxy>().GetUIData<UITestData>();
+        var data = UIManager.Instance.GetUIData<UITestProxy, UITestData>();
         data.tmpVal = 2;
         UIManager.Instance.OpenUI<UICtrlTest>(data);
         //

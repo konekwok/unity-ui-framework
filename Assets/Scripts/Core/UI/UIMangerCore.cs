@@ -41,6 +41,16 @@ namespace ui
                 }
                 return null;
             }
+            public D GetUIData<P, D>() where P : UIProxyBase
+                                         where D : UIDataBase, new()
+            {
+                var proxy = GetProxy<P>();
+                if(null != proxy)
+                {
+                    return proxy.GetUIData<D>();
+                }
+                return null;
+            }
             protected UIProxyBase GetProxy(string uiname)
             {
                 if(m_uiproxys.TryGetValue(uiname, out UIProxyBase val))
