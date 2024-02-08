@@ -2,3 +2,6 @@ unity-ui-framework.sln
 Assembly-CSharp.csproj
 obj
 Assembly-CSharp-Editor.csproj
+default-2021.dwlt
+UnityEditor.UI.csproj
+UnityEngine.UI.csproj
